@@ -1,1 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
 <h1>{{ annonce }}</h1>
+
+<div>
+    <p>{{ image }}</p>
+    <p>{{ description }}</p>
+    <p>{{ prix }} €</p>
+    <p>{{ etiquette }}</p>
+    <p>{{ dateDePublication }}</p>
+</div>
+<div>
+    {% for commentThread in commentThreads %}
+        <div>
+            <div>
+                {{ commentThread[0] }}
+                {% for comment in commentThread[1] %}
+                    <span>{{ comment }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

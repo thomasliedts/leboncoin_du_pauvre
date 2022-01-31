@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1> {{ description }} </h1>
+<div>
+    <p>Username: {{ username }}</p>
+    <p>Email: {{ email }}</p>
+    <p>Admin: {{ isAdmin ? 'yes' : 'no'}}</p>
+
+</div>
+{% endblock %}
