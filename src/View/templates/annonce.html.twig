@@ -13,8 +13,8 @@
     {% for commentThread in commentThreads %}
         <div>
             <div>
-                {{ commentThread[0] }}
-                {% for comment in commentThread[1] %}
+                {{ commentThread.comment }}
+                {% for comment in commentThread.answers %}
                     <span>{{ comment }}</span>
                 {% endfor %}
             </div>
