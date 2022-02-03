@@ -2,22 +2,40 @@
 
 namespace App\Controller;
 
-use App\Entity\Annonce;
+use App\Entity\Anno;
 use App\Entity\CommentThread;
+use App\Form\AnnonceFormType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AnnonceController extends AbstractController
 {
+
+    /**
+     * @Route("/annonce/create_annonce")
+     * @return Response
+     */
+    public function createAnnonce(Request $request)
+    {
+        $annonceForm = $this->createForm(AnnonceFormType::class);
+        $annonceForm->handleRequest($request);
+        if ($annonceForm->isSubmitted() && $annonceForm->isValid()) {
+            dd($annonceForm->getData()); //todo handle fixtures or wtv?
+        }
+        return $this->render('createAnnonce.html.twig', [
+            'createAnnonceForm' => $annonceForm->createView()
+        ]);
+    }
+
     /**
      * @Route("/annonce/{mon_annonce}")
      * @return Response
      */
-
     public function showAnnonce($mon_annonce)
     {
-        $annonce = new Annonce();
+        $annonce = new Anno();
         $annonce->setTitre($mon_annonce);
         $annonce->setPrix(35);
         $annonce->setDescription('coucou je suis une description');

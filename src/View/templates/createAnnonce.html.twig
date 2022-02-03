@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ form_start(createAnnonceForm) }}
+    {{ form_widget(createAnnonceForm) }}
+    <button type="'submit">Create annonce</button>
+    {{ form_end(createAnnonceForm) }}
+{% endblock %}
