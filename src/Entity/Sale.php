@@ -31,8 +31,8 @@ class Sale
     #[ORM\Column(type: 'string', length: 255)]
     private $tag;
 
-    #[ORM\Column(type: 'array')]
-    private $commentThreads = [];
+    #[ORM\Column(type: 'integer')]
+    private $commentThreadId;
 
     public function getId(): ?int
     {
@@ -111,14 +111,14 @@ class Sale
         return $this;
     }
 
-    public function getCommentThreads(): ?array
+    public function getCommentThreadId(): ?int
     {
-        return $this->commentThreads;
+        return $this->commentThreadId;
     }
 
-    public function setCommentThreads(array $commentThreads): self
+    public function setCommentThreadId(int $commentThreadId): self
     {
-        $this->commentThreads = $commentThreads;
+        $this->commentThreadId = $commentThreadId;
 
         return $this;
     }

@@ -19,6 +19,9 @@ class CommentThread
     #[ORM\Column(type: 'array', nullable: true)]
     private $answers = [];
 
+    #[ORM\Column(type: 'integer')]
+    private $threadId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,5 +49,15 @@ class CommentThread
         $this->answers = $answers;
 
         return $this;
+    }
+
+    public function getThreadId()
+    {
+        return $this->threadId;
+    }
+
+    public function setThreadId($threadId): void
+    {
+        $this->threadId = $threadId;
     }
 }
